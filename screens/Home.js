@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, FlatList } from 'react-native';
 import { COLOR_PALETTES } from '../constants/COLORS';
-import { PaletteList } from './PaletteList';
+import { PaletteList } from '../components/PaletteList';
 
 export const Home = () => {
   return (

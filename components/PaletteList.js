@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/core';
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export const PaletteList = ({ paletteName, colors }) => {
   const { navigate } = useNavigation();
@@ -13,7 +13,14 @@ export const PaletteList = ({ paletteName, colors }) => {
         });
       }}
     >
-      <Text>{paletteName}</Text>
+      <Text style={styles.text}>{paletteName}</Text>
     </TouchableOpacity>
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    fontWeight: 'bold',
+    fontSize: 18,
+  },
+});
