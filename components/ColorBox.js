@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const ColorBox = ({ colorName, hexCode }) => {
+export const ColorBox = ({ colorName, hexCode }) => {
   const boxColor = {
     backgroundColor: hexCode,
   };
@@ -36,4 +36,3 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
 });
-export default ColorBox;
