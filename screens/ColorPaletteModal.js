@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const PalettePreview = () => {
+export const ColorPaletteModal = () => {
   return (
     <View>
       <Text>Hello</Text>

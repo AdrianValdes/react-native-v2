@@ -1,11 +1,13 @@
+import { useNavigation } from '@react-navigation/core';
 import React, { useEffect, useState } from 'react';
-import { View, FlatList, RefreshControl } from 'react-native';
+import { View, FlatList, TouchableOpacity, Text } from 'react-native';
 
 import { PaletteList } from '../components/PaletteList';
 
 export const Home = () => {
   const [colorPalettes, setColorPalettes] = useState([]);
   const [isRefreshing, setIsRefreshing] = useState(false);
+  const { navigate } = useNavigation();
 
   const getColors = async () => {
     try {
@@ -40,6 +42,11 @@ export const Home = () => {
         )}
         refreshing={isRefreshing}
         onRefresh={handleRefresh}
+        ListHeaderComponent={
+          <TouchableOpacity onPress={() => navigate('ColorPaletteModal')}>
+            <Text>Launch Modal</Text>
+          </TouchableOpacity>
+        }
         // refreshControl={
         //   <RefreshControl refreshing={true} onRefresh={() => {}} />
         // }

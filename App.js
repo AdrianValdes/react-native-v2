@@ -5,24 +5,42 @@ import { Home } from './screens/Home';
 import { ColorPalette } from './screens/ColorPalette';
 
 import { createStackNavigator } from '@react-navigation/stack';
+import { ColorPaletteModal } from './screens/ColorPaletteModal';
 
-const Stack = createStackNavigator();
+const RootStack = createStackNavigator();
+const MainStack = createStackNavigator();
+
+const MainStackScreen = () => {
+  return (
+    <MainStack.Navigator>
+      <MainStack.Screen name="Home" component={Home} />
+      <MainStack.Screen
+        name="ColorPalette"
+        component={ColorPalette}
+        options={({
+          route: {
+            params: { paletteName },
+          },
+        }) => ({ title: paletteName })}
+      />
+    </MainStack.Navigator>
+  );
+};
 
 export const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen
-          name="ColorPalette"
-          component={ColorPalette}
-          options={({
-            route: {
-              params: { paletteName },
-            },
-          }) => ({ title: paletteName })}
+      <RootStack.Navigator mode="modal">
+        <RootStack.Screen
+          name="Main"
+          component={MainStackScreen}
+          options={{ headerShown: false }}
         />
-      </Stack.Navigator>
+        <RootStack.Screen
+          name="ColorPaletteModal"
+          component={ColorPaletteModal}
+        />
+      </RootStack.Navigator>
     </NavigationContainer>
   );
 };
