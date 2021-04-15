@@ -1,14 +1,8 @@
 import React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import {
-  FlatList,
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  View,
-  SectionList,
-} from 'react-native';
+
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import ColorBox from './components/ColorBox';
+import { NavigationContainer } from '@react-navigation/native';
 
 const COLORS = [
   { colorName: 'Base03', hexCode: '#002b36' },
@@ -31,18 +25,20 @@ const COLORS = [
 
 export const App = () => {
   return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <FlatList // Lists components scroll automatically
-          data={COLORS}
-          keyExtractor={(item) => item.colorName} // Not need in case the data already has key
-          renderItem={({ item: { colorName, hexCode } }) => (
-            <ColorBox colorName={colorName} hexCode={hexCode} />
-          )}
-          ListHeaderComponent={<Text style={styles.heading}>Solarized</Text>}
-        />
-      </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <SafeAreaView>
+        <View style={styles.container}>
+          <FlatList // Lists components scroll automatically
+            data={COLORS}
+            keyExtractor={(item) => item.colorName} // Not need in case the data already has key
+            renderItem={({ item: { colorName, hexCode } }) => (
+              <ColorBox colorName={colorName} hexCode={hexCode} />
+            )}
+            ListHeaderComponent={<Text style={styles.heading}>Solarized</Text>}
+          />
+        </View>
+      </SafeAreaView>
+    </NavigationContainer>
   );
 };
 
