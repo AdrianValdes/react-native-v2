@@ -12,8 +12,12 @@ export const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="ColorPalette" component={ColorPalette} />
         <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen
+          name="ColorPalette"
+          component={ColorPalette}
+          options={{ title: 'Color Palette' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
